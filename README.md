@@ -21,10 +21,8 @@
   - *fileprinter* creates and outputs a text file of the initial values, analysis, and results
 
 
-**Algorithm Source**
-https://docs.google.com/document/d/1bSVNpOnH_dKxkAGr718-iqh8s8Z0qQ54L-0mD-lbrXo/edit#heading=h.7krciw7xapag
------------------------------------------------------------------------------------------------------------
-
 Created by **Gavin Ng**
+Algorithm sourced from 
+https://docs.google.com/document/d/1bSVNpOnH_dKxkAGr718-iqh8s8Z0qQ54L-0mD-lbrXo/edit#heading=h.7krciw7xapag
 
 *Mr.Fox's Python Programming 1 Spring 2020*
