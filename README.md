@@ -15,4 +15,4 @@ An ACNH turnip price calculator written in Python 3
 
 Created by **Gavin Ng**
 
-* Mr.Fox's Python Programming 1 Spring 2020 * 
+*Mr.Fox's Python Programming 1 Spring 2020*
