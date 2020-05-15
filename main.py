@@ -15,14 +15,12 @@ while True:
 		print("Please input a valid integer")
 
 for cycle in range(11):
-	while True:
-		cycleprompt = input("Do you know the buy price of "+cycleconverter[cycle]+"? (y/n)")
-		if cycleprompt == 'y' or cycleprompt == 'n':
-			break
-		else:
-			print("Please input a valid response")
+	cycleprompt = input("Do you know the buy price of "+cycleconverter[cycle]+"? (y/n)")
 	if cycleprompt.casefold() == 'y':
 		cyclepoints[cycleconverter[cycle]] = int(input("What is the buy price of "+cycleconverter[cycle]+"?"))
-	elif cycleprompt.casefold() == 'n':
+
+for cycle in cyclepoints:
+	if cyclepoints[cycle] == 0:
 		break
+	print(cycleconverter[cycle]+" = "+cyclepoints[cycle])
 
