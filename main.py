@@ -18,9 +18,13 @@ for cycle in range(11):
 	cycleprompt = input("Do you know the buy price of "+cycleconverter[cycle]+"? (y/n)")
 	if cycleprompt.casefold() == 'y':
 		cyclepoints[cycleconverter[cycle]] = int(input("What is the buy price of "+cycleconverter[cycle]+"?"))
+	else:
+		break
 
-for cycle in cyclepoints:
+cycleconvertercounter = 0
+for cycle in cyclepoints.keys():
 	if cyclepoints[cycle] == 0:
 		break
-	print(cycleconverter[cycle]+" = "+cyclepoints[cycle])
-
+	else:
+		print(cycleconverter[cycleconvertercounter]," = ",cyclepoints[cycle])
+	cycleconvertercounter += 1
