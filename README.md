@@ -10,10 +10,10 @@ An ACNH turnip price calculator written in Python 3
 
 #### trends.py ####
 - Analyzes datapoints from main.py input and determines trend with minimum and maximum values per cycle
-- *Random* - no discernable trend with highs and lows
-- *Decreasing* - steady decrease in value throughout the cycles
-- *Large Spike* - steady decrease in value into a large net increase and back to a steady decrease
-- *Small Spike* - steady decrease in value into a small net increase and back to a steady decrease
+  - *Random* - no discernable trend with highs and lows
+  - *Decreasing* - steady decrease in value throughout the cycles
+  - *Large Spike* - steady decrease in value into a large net increase and back to a steady decrease
+  - *Small Spike* - steady decrease in value into a small net increase and back to a steady decrease
 
 #### output.py ####
 - Organizes and reformats analysis from trends.py into a ux friendly output
