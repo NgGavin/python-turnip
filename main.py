@@ -57,3 +57,5 @@ elif trendtype == 'small_spike':
 elif trendtype == 'large_spike':
 	cycleoutput = trends.large_spike(cyclepoints)
 
+# Generate Output Using printer.py
+printer.fileprinter(cycleoutput)
