@@ -1,5 +1,5 @@
 # python-turnip
-An ACNH turnip price calculator written in Python 3
+**An ACNH turnip price calculator written in Python 3**
 
 ## Included Files: ##
 
