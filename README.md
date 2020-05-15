@@ -5,8 +5,8 @@ An ACNH turnip price calculator written in Python 3
 
 #### main.py ####
 - Main input fields for initial buy price and datapoints that feeds data into trends.py
-  - ###### cycleconverter ###### converts integer of cycle to ux friendly output
-  - ###### cyclepoints ###### stores the values of each cycle if applicable
+  - ###### cycleconverter###### converts integer of cycle to ux friendly output
+  - ###### cyclepoints###### stores the values of each cycle if applicable
 
 #### trends.py ####
 - Analyzes datapoints from main.py input and determines trend with minimum and maximum values per cycle
