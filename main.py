@@ -9,7 +9,7 @@ import printer.py
 
 # Setup for Cycles
 cycleconverter = ["Monday AM","Monday PM","Tuesday AM","Tuesday PM","Wednesday AM","Wednesday PM","Thursday AM","Thursday PM","Friday AM","Friday PM","Saturday AM","Saturday PM"]
-cyclepoints = {"Monday AM" : 0,"Monday PM" : 0,"Tuesday AM" : 0,"Tuesday PM" : 0,"Wednesday AM" : 0,"Wednesday PM" : 0,"Thursday AM" : 0,"Thursday PM" : 0,"Friday AM" : 0,"Friday PM" : 0,"Saturday AM" : 0,"Saturday PM" : 0,}
+cyclepoints = {"Monday AM" : None,"Monday PM" : None,"Tuesday AM" : None,"Tuesday PM" : None,"Wednesday AM" : None,"Wednesday PM" : None,"Thursday AM" : None,"Thursday PM" : None,"Friday AM" : None,"Friday PM" : None,"Saturday AM" : None,"Saturday PM" : None}
 cycleconvertercounter = 0
 
 # Initial Buy Price Input
@@ -26,7 +26,14 @@ while True:
 for cycle in range(11):
 	cycleprompt = input("Do you know the buy price of "+cycleconverter[cycle]+"? (y/n)")
 	if cycleprompt.casefold() == 'y':
-		cyclepoints[cycleconverter[cycle]] = int(input("What is the buy price of "+cycleconverter[cycle]+"?"))
+		while True:
+			try: cyclepoints[cycleconverter[cycle]] = int(input("What is the buy price of "+cycleconverter[cycle]+"?"))
+			except ValueError:
+				print("Please input your turnip price in integer form")
+			if cyclepoints[cycleconverter[cycle]] <= 660 and cyclepoints[cycleconverter[cycle]] > 9:
+				break
+			else:
+				print("Invalid Input. It is impossible to have a turnip price less than 9 bells or over 660 bells")
 	elif cycleprompt.casefold() == 'n':
 		break
 	else:
@@ -37,7 +44,7 @@ for cycle in range(11):
 print("These are the datapoints you have provided:")
 print("\nInitial Buy Price of",buy_price,"\n")
 for cycle in cyclepoints.keys():
-	if cyclepoints[cycle] == 0:
+	if cyclepoints[cycle] == None:
 		break
 	else:
 		print(cycleconverter[cycleconvertercounter]," = ",cyclepoints[cycle])
