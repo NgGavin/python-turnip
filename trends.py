@@ -6,7 +6,7 @@ Read README for more information about python-turnip in general and its associat
 # Variable Setup for Trend Analysis
 trendinterim = []
 increasing1, decreasing1, increasing2, decreasing2, increasing3, decreasing3 = None, None, None, None, None, None
-previousloop = ""
+previousloop = "" # ('0' == increase, '1' == decrease)
 
 # Variable Setup for Trend Output
 cycleoutput = ""

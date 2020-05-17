@@ -23,7 +23,7 @@ while True:
 		print("Please input a valid integer")
 
 # Dictionary Populator
-for cycle in range(11):
+for cycle in len(cyclepoints):
 	cycleprompt = input("Do you know the buy price of "+cycleconverter[cycle]+"? (y/n)")
 	if cycleprompt.casefold() == 'y':
 		while True:
@@ -51,10 +51,10 @@ for cycle in cyclepoints.keys():
 	cycleconvertercounter += 1
 print("\n")
 
-# Trend Determinatior Using Initial Buy Price and Cycle Datapoints
+# Trend Determinatior Using Initial Buy Price and Cycle Datapoints (WIP)
 trendtype = trends.trendanalysis(buy_price,cyclepoints)
 
-# Range Output According to Trend Type
+# Range Output According to Trend Type (WIP)
 if trendtype == 'random':
 	cycleoutput = trends.random(cyclepoints)
 elif trendtype == 'decreasing':
@@ -64,5 +64,5 @@ elif trendtype == 'small_spike':
 elif trendtype == 'large_spike':
 	cycleoutput = trends.large_spike(cyclepoints)
 
-# Generate Output Using printer.py
+# Generate Output Using printer.py (WIP)
 printer.fileprinter(cycleoutput)
