@@ -7,8 +7,6 @@ Read README for more information about python-turnip in general and its associat
 trendinterim = []
 increasing1, decreasing1, increasing2, decreasing2, increasing3, decreasing3 = None, None, None, None, None, None
 previousloop = ""
-current = 1
-previous = 0
 
 # Variable Setup for Trend Output
 cycleoutput = ""
@@ -17,11 +15,13 @@ cycleoutput = ""
 # Determine the Trend Type
 def trendanalysis(cyclepoints):
 	# Converts Dictionary Into A List For Analysis
-	for cycle in cyclepoints.keys():
-		trendinterim.append(cycle)
+	for cycle in cyclepoints.values():
+		if cycle != None:
+			trendinterim.append(cycle)
 	
 	# Increasing and Decreasing Pattern Sorter
-	while True:
+	previous = 0
+	for current in len(trendinterim):
 		if trendinterim[previous] < trendinterim[current]:
 			increasing1 += 1
 			previousloop += '0'
@@ -40,11 +40,7 @@ def trendanalysis(cyclepoints):
 		elif trendinterim[previous] > trendinterim[current] and previousloop[-1] == '0' and increasing1 != None and decreasing1 != None and increasing2 != None and decreasing2 != None:
 			decreasing3 += 1
 			previousloop += '1'
-		current += 1
-		previous += 1
-		if (current >= 0 and current < len(trendinterim)) == False:
-			break
-	
+		previous = current - 1
 	trendtype = None #Placeholder
 	return trendtype
 
