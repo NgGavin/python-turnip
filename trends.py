@@ -118,8 +118,8 @@ def decreasing(buy_price, cyclepoints):
 	baserate = [trendinterim[0]/0.85,trendinterim[0]/0.9]
 	for i in trendinterim:
 		if i == None:
-			minimumcycle.append(trendinterim[counter]-(baserate[0]*0.05))
-			maximumcycle.append(trendinterim[counter]-(baserate[1]*0.03))
+			minimumcycle[i] = trendinterim[counter]-(baserate[0]*0.05)
+			maximumcycle[i] = trendinterim[counter]-(baserate[1]*0.03)
 		counter += 1
 	return (minimumcycle,maximumcycle)
 
@@ -134,27 +134,27 @@ def random(buy_price, cyclepoints):
 		if i == None:
 			if startincrease:
 				if trendinterim.index(i) in range(increasing1 + decreasing1,increasing1 + decreasing1 + increasing2) or trendinterim.index(i) in range(increasing1 + decreasing1 + increasing2 + decreasing2, increasing1 + decreasing1 + increasing2 + decreasing2 + increasing3):
-					minimumcycle.append(buy_price*0.9)
-					maximumcycle.append(buy_price*1.4)
+					minimumcycle[i] = buy_price*0.9
+					maximumcycle[i] = buy_price*1.4
 				elif trendinterim.index(i) in range(increasing1 + decreasing1 + increasing2, decreasing2):
 					if decreasingcounter == True:
-						minimumcycle.append(baserate[0])
-						maximumcycle.append(baserate[1])
+						minimumcycle[i] = baserate[0]
+						maximumcycle[i] = baserate[1]
 					else:
-						minimumcycle.append(trendinterim[trendinterim.index(i)-1]-baserate[0]*.1)
-						maximumcycle.append(trendinterim[trendinterim.index(i)-1]-baserate[0]*0.04)
+						minimumcycle[i] = trendinterim[trendinterim.index(i)-1]-baserate[0]*.1
+						maximumcycle[i] = trendinterim[trendinterim.index(i)-1]-baserate[0]*0.04
 					decreasingcounter = True
 			elif startdecrease:
 				if trendinterim.index(i) in range(decreasing1,increasing1) or trendinterim.index(i) in range(decreasing1 + increasing1 + decreasing2, increasing3):
-					minimumcycle.append(buy_price*0.9)
-					maximumcycle.append(buy_price*1.4)
+					minimumcycle[i] = buy_price*0.9
+					maximumcycle[i] = buy_price*1.4
 				elif trendinterim.index(i) in range(decreasing1 + increasing1, decreasing2):
 					if decreasingcounter == True:
-						minimumcycle.append(baserate[0])
-						maximumcycle.append(baserate[1])
+						minimumcycle[i] = baserate[0]
+						maximumcycle[i] = ]baserate[1]
 					else:
-						minimumcycle.append(trendinterim[trendinterim.index(i)-1]-baserate[0]*.1)
-						maximumcycle.append(trendinterim[trendinterim.index(i)-1]-baserate[0]*0.04)
+						minimumcycle[i] = trendinterim[trendinterim.index(i)-1]-baserate[0]*.1
+						maximumcycle[i] = trendinterim[trendinterim.index(i)-1]-baserate[0]*0.04
 					decreasingcounter = True
 	return (minimumcycle, maximumcycle)
 
@@ -170,39 +170,39 @@ def small_spike(buy_price, cyclepoints):
 		if i == None:
 			if startdecrease:
 				if trendinterim.index(i) - decreasing1 == 1 or trendinterim.index(i) - decreasing1 == 2:
-					minimumcycle.append(baserate[0])
-					maximumcycle.append(baserate[1])
+					minimumcycle[i] = baserate[0]
+					maximumcycle[i] = baserate[1]
 				elif trendinterim.index(i) - decreasing1 == 3 or trendinterim.index(i) - decreasing1 == 5:
-					minimumcycle.append(baserate[1])
-					maximumcycle.append(maxrate[1]-1)
+					minimumcycle[i] = baserate[1]
+					maximumcycle[i] = maxrate[1]-1
 				elif trendinterim.index(i) - decreasing1 == 4:
-					minimumcycle.append(maxrate[0])
-					maximumcycle.append(maxrate[1])
+					minimumcycle[i] = maxrate[0]
+					maximumcycle[i] = maxrate[1]
 				elif trendinterim.index(i) in range(decreasing1 + increasing1, decreasing1 + increasing1 + decreasing3):
 					if decreasecounter != True:
-						minimumcycle.append(baserate[0]*0.95)
-						maximumcycle.append(baserate[1]*0.97)
+						minimumcycle[i] = baserate[0]*0.95
+						maximumcycle[i] = baserate[1]*0.97
 					else:
-						minimumcycle.append(trendinterim[i-1] - baserate[0]*0.05)
-						maximumcycle.append(trendinterim[i-1] - baserate[1]*0.03)
+						minimumcycle[i] = trendinterim[i-1] - baserate[0]*0.05
+						maximumcycle[i] = trendinterim[i-1] - baserate[1]*0.03
 					decreasecounter = True
 			if startincrease:
 				if trendinterim.index(i) == 1 or trendinterim.index(i) == 2:
-					minimumcycle.append(baserate[0])
-					maximumcycle.append(baserate[1])
+					minimumcycle[i] = baserate[0]
+					maximumcycle[i] = baserate[1]
 				elif trendinterim.index(i) == 3 or trendinterim.index(i) == 5:
-					minimumcycle.append(baserate[1])
-					maximumcycle.append(maxrate[1]-1)
+					minimumcycle[i] = baserate[1]
+					maximumcycle[i] = maxrate[1]-1
 				elif trendinterim.index(i) == 4:
-					minimumcycle.append(maxrate[0])
-					maximumcycle.append(maxrate[1])
+					minimumcycle[i] = maxrate[0]
+					maximumcycle[i] = maxrate[1]
 				elif trendinterim.index(i) > increasing1:
 					if decreasecounter != True:
-						minimumcycle.append(baserate[0]*0.95)
-						maximumcycle.append(baserate[1]*0.97)
+						minimumcycle[i] = baserate[0]*0.95
+						maximumcycle[i] = baserate[1]*0.97
 					else:
-						minimumcycle.append(trendinterim[i-1] - baserate[0]*0.05)
-						maximumcycle.append(trendinterim[i-1] - baserate[1]*0.03)
+						minimumcycle[i] = trendinterim[i-1] - baserate[0]*0.05
+						maximumcycle[i] = trendinterim[i-1] - baserate[1]*0.03
 					decreasecounter = True
 	return (minimumcycle, maximumcycle)
 
@@ -213,9 +213,9 @@ def large_spike(buy_price, cyclepoints):
 	trendinterim, minimumcycle, maximumcycle = cyclesetup(buy_price, cyclepoints)
 	baseprice = [buy_price*0.4, buy_price*0.09]
 	for i in trendinterim:
-		if i != None:
-			minimumcycle.append(baseprice[0])
-			maximumcycle.append(baseprice[1])
+		if i == None:
+			minimumcycle[i] = baseprice[0]
+			maximumcycle[i] = baseprice[1]
 	return (minimumcycle, maximumcycle)
 
 
@@ -223,7 +223,7 @@ def large_spike(buy_price, cyclepoints):
 def inconclusive(buy_price, cyclepoints):
 	trendinterim, minimumcycle, maximumcycle = cyclesetup(buy_price, cyclepoints)
 	for i in trendinterim:
-		if i != None:
-			minimumcycle.append(9)
-			maximumcycle.append(660)
+		if i == None:
+			minimumcycle[i] = 9
+			maximumcycle[i] = 660
 	return (minimumcycle, maximumcycle)
