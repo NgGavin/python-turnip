@@ -3,9 +3,10 @@ Created by: Gavin Ng
 Read README for more information about python-turnip in general and its associated files
 """
 
+import math
+
 # Global Setup
-global startincrease, startdecrease, increasing1, decreasing1, increasing2, decreasing2, increasing3, decreasing3
-startincrease, startdecrease, increasing1, decreasing1, increasing2, decreasing2, increasing3, decreasing3 = None, None, None, None, None, None, None, None
+startincrease, startdecrease, increasing1, decreasing1, increasing2, decreasing2, increasing3, decreasing3 = False, False, 0, 0, 0, 0, 0, 0
 
 
 # Determine the Trend Type
@@ -14,6 +15,7 @@ def trendanalysis(buy_price, cyclepoints):
 	trendinterim = []
 	previousloop = "" # ('0' == increase, '1' == decrease)
 	cycleconverter = ["Monday AM","Monday PM","Tuesday AM","Tuesday PM","Wednesday AM","Wednesday PM","Thursday AM","Thursday PM","Friday AM","Friday PM","Saturday AM","Saturday PM"]
+	global startincrease, startdecrease, increasing1, decreasing1, increasing2, decreasing2, increasing3, decreasing3
 
 	# Converts Dictionary Into A List For Analysis
 	for i in cyclepoints.values():
@@ -60,15 +62,15 @@ def trendanalysis(buy_price, cyclepoints):
 		decreasingtrend = False
 
 	# Random
-	if (3 >= decreasing1 >= 2) and startdecrease == True and cyclepoints[cycleconverter[0]] in range(buy_price * .6, buy_price * .8001):
+	if (3 >= decreasing1 >= 2) and startdecrease == True and cyclepoints[cycleconverter[0]] in range(int(buy_price * .6), math.ceil(buy_price * .8001)):
 		randomtrend = True
-	elif (3 >= decreasing1 >= 2) and startincrease == True and cyclepoints[cycleconverter[0]] in range(buy_price * .9, buy_price * 1.4001) and cyclepoints[cycleconverter[increasing1-1]] in range(buy_price * .6, buy_price * .8001):
+	elif (3 >= decreasing1 >= 2) and startincrease == True and cyclepoints[cycleconverter[0]] in range(int(buy_price * .9), math.ceil(buy_price * 1.4001)) and cyclepoints[cycleconverter[increasing1-1]] in range(buy_price * .6, buy_price * .8001):
 		randomtrend = True
 	else:
 		randomtrend = False
 	
 	# Small Spike
-	if (5 >= increasing1 >= 1) and increasing2 == 0 and increasing3 == 0 and decreasing3 == 0 and cyclepoints[cycleconverter[decreasing1 - 1]] in range(buy_price * .9, buy_price * 1.4001):
+	if (5 >= increasing1 >= 1) and increasing2 == 0 and increasing3 == 0 and decreasing3 == 0 and cyclepoints[cycleconverter[decreasing1 - 1]] in range(int(buy_price * .9), math.ceil(buy_price * 1.4001)):
 		small_spiketrend = True
 	else:
 		small_spiketrend = False
@@ -110,6 +112,7 @@ def cyclesetup(buy_price, cyclepoints):
 
 # Decreasing Trend Type
 def decreasing(buy_price, cyclepoints):
+	global startincrease, startdecrease, increasing1, decreasing1, increasing2, decreasing2, increasing3, decreasing3
 	trendinterim, minimumcycle, maximumcycle = cyclesetup(buy_price, cyclepoints)
 	counter = 0
 	baserate = [trendinterim[0]/0.85,trendinterim[0]/0.9]
@@ -123,6 +126,7 @@ def decreasing(buy_price, cyclepoints):
 
 # Random Trend Type
 def random(buy_price, cyclepoints):
+	global startincrease, startdecrease, increasing1, decreasing1, increasing2, decreasing2, increasing3, decreasing3
 	trendinterim, minimumcycle, maximumcycle, cycleoutput= cyclesetup(buy_price, cyclepoints)
 	decreasingcounter = None
 	baserate = [buy_price*0.6,buy_price*0.8]
@@ -157,7 +161,8 @@ def random(buy_price, cyclepoints):
 
 # Small Spike Trend Type
 def small_spike(buy_price, cyclepoints):
-	trendinterim, minimumcycle, maximumcycle, cycleoutput= cyclesetup(buy_price, cyclepoints)
+	global startincrease, startdecrease, increasing1, decreasing1, increasing2, decreasing2, increasing3, decreasing3
+	trendinterim, minimumcycle, maximumcycle = cyclesetup(buy_price, cyclepoints)
 	baserate = [buy_price*0.4,buy_price*0.9]
 	maxrate = [buy_price*1.4, buy_price*2.0]
 	decreasecounter = None
@@ -204,6 +209,7 @@ def small_spike(buy_price, cyclepoints):
 
 # Large Spike Trend Type
 def large_spike(buy_price, cyclepoints):
+	global startincrease, startdecrease, increasing1, decreasing1, increasing2, decreasing2, increasing3, decreasing3
 	trendinterim, minimumcycle, maximumcycle, cycleoutput= cyclesetup(buy_price, cyclepoints)
 	baseprice = [buy_price*0.4, buy_price*0.09]
 	for i in trendinterim:
