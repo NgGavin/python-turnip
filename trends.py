@@ -121,13 +121,13 @@ def decreasing(buy_price, cyclepoints):
 			minimumcycle.append(trendinterim[counter]-(baserate[0]*0.05))
 			maximumcycle.append(trendinterim[counter]-(baserate[1]*0.03))
 		counter += 1
-	return minimumcycle,maximumcycle
+	return (minimumcycle,maximumcycle)
 
 
 # Random Trend Type
 def random(buy_price, cyclepoints):
 	global startincrease, startdecrease, increasing1, decreasing1, increasing2, decreasing2, increasing3, decreasing3
-	trendinterim, minimumcycle, maximumcycle, cycleoutput= cyclesetup(buy_price, cyclepoints)
+	trendinterim, minimumcycle, maximumcycle = cyclesetup(buy_price, cyclepoints)
 	decreasingcounter = None
 	baserate = [buy_price*0.6,buy_price*0.8]
 	for i in trendinterim:
@@ -156,7 +156,7 @@ def random(buy_price, cyclepoints):
 						minimumcycle.append(trendinterim[trendinterim.index(i)-1]-baserate[0]*.1)
 						maximumcycle.append(trendinterim[trendinterim.index(i)-1]-baserate[0]*0.04)
 					decreasingcounter = True
-	return minimumcycle, maximumcycle
+	return (minimumcycle, maximumcycle)
 
 
 # Small Spike Trend Type
@@ -204,26 +204,26 @@ def small_spike(buy_price, cyclepoints):
 						minimumcycle.append(trendinterim[i-1] - baserate[0]*0.05)
 						maximumcycle.append(trendinterim[i-1] - baserate[1]*0.03)
 					decreasecounter = True
-	return minimumcycle, maximumcycle
+	return (minimumcycle, maximumcycle)
 
 
 # Large Spike Trend Type
 def large_spike(buy_price, cyclepoints):
 	global startincrease, startdecrease, increasing1, decreasing1, increasing2, decreasing2, increasing3, decreasing3
-	trendinterim, minimumcycle, maximumcycle, cycleoutput= cyclesetup(buy_price, cyclepoints)
+	trendinterim, minimumcycle, maximumcycle = cyclesetup(buy_price, cyclepoints)
 	baseprice = [buy_price*0.4, buy_price*0.09]
 	for i in trendinterim:
 		if i != None:
 			minimumcycle.append(baseprice[0])
 			maximumcycle.append(baseprice[1])
-	return minimumcycle, maximumcycle
+	return (minimumcycle, maximumcycle)
 
 
 # Inconclusive Spike Trend Type
 def inconclusive(buy_price, cyclepoints):
-	trendinterim, minimumcycle, maximumcycle, cycleoutput= cyclesetup(buy_price, cyclepoints)
+	trendinterim, minimumcycle, maximumcycle = cyclesetup(buy_price, cyclepoints)
 	for i in trendinterim:
 		if i != None:
 			minimumcycle.append(9)
 			maximumcycle.append(660)
-	return minimumcycle, maximumcycle
+	return (minimumcycle, maximumcycle)

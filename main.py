@@ -57,15 +57,25 @@ trendtype = trends.trendanalysis(buy_price,cyclepoints)
 # Range Output According to Trend Type
 cycleoutput = []
 if trendtype == 'random':
-	cycleoutput[1],cycleoutput[2] = trends.random(buy_price, cyclepoints)
+	output = trends.random(buy_price, cyclepoints)
+	cycleoutput.append(output[0])
+	cycleoutput.append(output[1])
 elif trendtype == 'decreasing':
-	cycleoutput[1],cycleoutput[2] = trends.decreasing(buy_price, cyclepoints)
+	output = trends.decreasing(buy_price, cyclepoints)
+	cycleoutput.append(output[0])
+	cycleoutput.append(output[1])
 elif trendtype == 'small_spike':
-	cycleoutput[1],cycleoutput[2] = trends.small_spike(buy_price, cyclepoints)
+	output = trends.small_spike(buy_price, cyclepoints)
+	cycleoutput.append(output[0])
+	cycleoutput.append(output[1])
 elif trendtype == 'large_spike':
-	cycleoutput[1],cycleoutput[2] = trends.large_spike(buy_price, cyclepoints)
+	output = trends.large_spike(buy_price, cyclepoints)
+	cycleoutput.append(output[0])
+	cycleoutput.append(output[1])
 elif trendtype == None:
-	cycleoutput[1],cycleoutput[2] = trends.inconclusive(buy_price,cyclepoints)
+	output = trends.inconclusive(buy_price,cyclepoints)
+	cycleoutput.append(output[0])
+	cycleoutput.append(output[1])
 
 # Generate Output Using printer.py (WIP)
 printer.fileprinter(buy_price, cycleoutput,cycleconverter)
