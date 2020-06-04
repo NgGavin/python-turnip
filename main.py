@@ -4,8 +4,8 @@ Read README for more information about python-turnip in general and its associat
 """
 
 # File Imports
-import trends.py
-import printer.py
+import trends
+import printer
 
 # Setup for Cycles
 cycleconverter = ["Monday AM","Monday PM","Tuesday AM","Tuesday PM","Wednesday AM","Wednesday PM","Thursday AM","Thursday PM","Friday AM","Friday PM","Saturday AM","Saturday PM"]
@@ -23,7 +23,7 @@ while True:
 		print("Please input a valid integer")
 
 # Dictionary Populator
-for cycle in len(cyclepoints):
+for cycle in range(len(cyclepoints)):
 	cycleprompt = input("Do you know the buy price of "+cycleconverter[cycle]+"? (y/n)")
 	if cycleprompt.casefold() == 'y':
 		while True:
@@ -51,20 +51,21 @@ for cycle in cyclepoints.keys():
 	cycleconvertercounter += 1
 print("\n")
 
-# Trend Determinatior Using Initial Buy Price and Cycle Datapoints (WIP)
+# Trend Determinatior Using Initial Buy Price and Cycle Datapoints
 trendtype = trends.trendanalysis(buy_price,cyclepoints)
 
-# Range Output According to Trend Type (WIP)
+# Range Output According to Trend Type
+cycleoutput = []
 if trendtype == 'random':
-	cycleoutput = trends.random(cyclepoints)
+	cycleoutput[1],cycleoutput[2] = trends.random(buy_price, cyclepoints)
 elif trendtype == 'decreasing':
-	cycleoutput = trends.decreasing(cyclepoints)
+	cycleoutput[1],cycleoutput[2] = trends.decreasing(buy_price, cyclepoints)
 elif trendtype == 'small_spike':
-	cycleoutput = trends.small_spike(cyclepoints)
+	cycleoutput[1],cycleoutput[2] = trends.small_spike(buy_price, cyclepoints)
 elif trendtype == 'large_spike':
-	cycleoutput = trends.large_spike(cyclepoints)
+	cycleoutput[1],cycleoutput[2] = trends.large_spike(buy_price, cyclepoints)
 elif trendtype == None:
-	print("Inconclusive results")
+	cycleoutput[1],cycleoutput[2] = trends.inconclusive(buy_price,cyclepoints)
 
 # Generate Output Using printer.py (WIP)
-printer.fileprinter(cycleoutput)
+printer.fileprinter(buy_price, cycleoutput,cycleconverter)

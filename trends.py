@@ -22,7 +22,7 @@ def trendanalysis(buy_price, cyclepoints):
 
 	# Increasing and Decreasing Pattern Sorter
 	previous = 0
-	for current in len(trendinterim):
+	for current in range(len(trendinterim)):
 		if trendinterim[previous] < trendinterim[current]:
 			increasing1 += 1
 			previousloop += '0'
@@ -220,4 +220,4 @@ def inconclusive(buy_price, cyclepoints):
 		if i != None:
 			minimumcycle.append(9)
 			maximumcycle.append(660)
-	return cycleoutput
+	return minimumcycle, maximumcycle
