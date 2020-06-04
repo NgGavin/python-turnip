@@ -70,7 +70,7 @@ def trendanalysis(buy_price, cyclepoints):
 		randomtrend = False
 	
 	# Small Spike
-	if (5 >= increasing1 >= 1) and increasing2 == 0 and increasing3 == 0 and decreasing3 == 0 and cyclepoints[cycleconverter[decreasing1 - 1]] in range(int(buy_price * .9), math.ceil(buy_price * 1.4001)):
+	if (5 >= increasing1 >= 1) and increasing2 == 0 and increasing3 == 0 and decreasing3 == 0 and cyclepoints[cycleconverter[decreasing1 - 1]] in range(int(buy_price* .9), math.ceil(buy_price * 1.4001)):
 		small_spiketrend = True
 	else:
 		small_spiketrend = False
@@ -139,8 +139,8 @@ def random(buy_price, cyclepoints):
 						minimumcycle[trendinterim.index(i,counter)] = baserate[0]
 						maximumcycle[trendinterim.index(i,counter)] = baserate[1]
 					else:
-						minimumcycle[trendinterim.index(i,counter)] = trendinterim[trendinterim.index(i,counter)-1]-baserate[0]*.1
-						maximumcycle[trendinterim.index(i,counter)] = trendinterim[trendinterim.index(i,counter)-1]-baserate[0]*0.04
+						minimumcycle[trendinterim.index(i,counter)] = minimumcycle[trendinterim.index(i,counter)-1]-baserate[0]*.1
+						maximumcycle[trendinterim.index(i,counter)] = maximumcycle[trendinterim.index(i,counter)-1]-baserate[0]*0.04
 					decreasingcounter = True
 			elif startdecrease:
 				if trendinterim.index(i,counter) in range(decreasing1,increasing1) or trendinterim.index(i,counter) in range(decreasing1 + increasing1 + decreasing2, increasing3):
@@ -151,8 +151,8 @@ def random(buy_price, cyclepoints):
 						minimumcycle[trendinterim.index(i,counter)] = baserate[0]
 						maximumcycle[trendinterim.index(i,counter)] = baserate[1]
 					else:
-						minimumcycle[trendinterim.index(i,counter)] = trendinterim[trendinterim.index(i,counter)-1]-baserate[0]*.1
-						maximumcycle[trendinterim.index(i,counter)] = trendinterim[trendinterim.index(i,counter)-1]-baserate[0]*0.04
+						minimumcycle[trendinterim.index(i,counter)] = minimumcycle[trendinterim.index(i,counter)-1]-baserate[0]*.1
+						maximumcycle[trendinterim.index(i,counter)] = maximumcycle[trendinterim.index(i,counter)-1]-baserate[0]*0.04
 					decreasingcounter = True
 		counter += 1
 	return (minimumcycle, maximumcycle)
@@ -178,15 +178,15 @@ def small_spike(buy_price, cyclepoints):
 				elif trendinterim.index(i,counter) - decreasing1 == 4:
 					minimumcycle[trendinterim.index(i,counter)] = maxrate[0]
 					maximumcycle[trendinterim.index(i,counter)] = maxrate[1]
-				elif trendinterim.index(i,counter) in range(decreasing1 + increasing1, decreasing1 + increasing1 + decreasing3):
+				else:
 					if decreasecounter != True:
 						minimumcycle[trendinterim.index(i,counter)] = baserate[0]*0.95
 						maximumcycle[trendinterim.index(i,counter)] = baserate[1]*0.97
 					else:
-						minimumcycle[trendinterim.index(i,counter)] = trendinterim[i-1] - baserate[0]*0.05
-						maximumcycle[trendinterim.index(i,counter)] = trendinterim[i-1] - baserate[1]*0.03
+						minimumcycle[trendinterim.index(i,counter)] = minimumcycle[trendinterim.index(i,counter)-1] - baserate[0]*0.05
+						maximumcycle[trendinterim.index(i,counter)] = maximumcycle[trendinterim.index(i,counter)-1] - baserate[1]*0.03
 					decreasecounter = True
-			if startincrease:
+			elif startincrease:
 				if trendinterim.index(i,counter) == 1 or trendinterim.index(i,counter) == 2:
 					minimumcycle[trendinterim.index(i,counter)] = baserate[0]
 					maximumcycle[trendinterim.index(i,counter)] = baserate[1]
@@ -201,9 +201,11 @@ def small_spike(buy_price, cyclepoints):
 						minimumcycle[trendinterim.index(i,counter)] = baserate[0]*0.95
 						maximumcycle[trendinterim.index(i,counter)] = baserate[1]*0.97
 					else:
-						minimumcycle[trendinterim.index(i,counter)] = trendinterim[i-1] - baserate[0]*0.05
-						maximumcycle[trendinterim.index(i,counter)] = trendinterim[i-1] - baserate[1]*0.03
+						minimumcycle[trendinterim.index(i,counter)] = minimumcycle[trendinterim.index(i,counter)-1] - baserate[0]*0.05
+						maximumcycle[trendinterim.index(i,counter)] = maximumcycle[trendinterim.index(i,counter)-1] - baserate[1]*0.03
 					decreasecounter = True
+				else:
+					print("tester startincrease")
 		counter += 1
 	return (minimumcycle, maximumcycle)
 

@@ -21,7 +21,6 @@
 #### printer.py *output*
 
 - Organizes and reformats analysis from trends.py into a ux friendly output
-  - *grapher* creates a graph based off of maximum and minimum available buy prices based off of the values, analysis, and results to be displayed on fileprinter
   - *fileprinter* creates and outputs a text file of the initial values, analysis, and results
 
 ***
