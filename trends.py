@@ -230,7 +230,7 @@ def inconclusive(buy_price, cyclepoints):
 	counter = 0
 	for i in trendinterim:
 		if i == None:
-			minimumcycle[trendinterim.index(i,counter)] = 9
-			maximumcycle[trendinterim.index(i,counter)] = 660
+			minimumcycle[trendinterim.index(i,counter)] = buy_price * .1
+			maximumcycle[trendinterim.index(i,counter)] = buy_price * 6
 		counter += 1
 	return (minimumcycle, maximumcycle)

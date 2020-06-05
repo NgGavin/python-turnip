@@ -16,11 +16,11 @@ cycleconvertercounter = 0
 while True:
 	try:buy_price = int(input("How much did you initially pay for each turnip? "))
 	except ValueError:
-		print("Please input a valid integer")
+		print("Turnip Prices are in integer form")
 	if buy_price >= 90 and buy_price <= 110:
 		break
 	else:
-		print("Please input a valid integer")
+		print("Turnip buy prices are in the range of 90-110 bells")
 
 # Dictionary Populator
 for cycle in range(len(cyclepoints)):
@@ -37,19 +37,9 @@ for cycle in range(len(cyclepoints)):
 	elif cycleprompt.casefold() == 'n':
 		break
 	else:
-		print("Invalid input. Printing data...\n")
+		print("Invalid input\n")
 		break
 
-# Cycle Datapoint Verification + Benchmark
-print("These are the datapoints you have provided:")
-print("\nInitial Buy Price of",buy_price,"\n")
-for cycle in cyclepoints.keys():
-	if cyclepoints[cycle] == None:
-		break
-	else:
-		print(cycleconverter[cycleconvertercounter]," = ",cyclepoints[cycle])
-	cycleconvertercounter += 1
-print("\n")
 
 # Trend Determinatior Using Initial Buy Price and Cycle Datapoints
 trendtype = trends.trendanalysis(buy_price,cyclepoints)
@@ -78,4 +68,4 @@ elif trendtype == None:
 	cycleoutput.append(output[1])
 
 # Generate Output Using printer.py (WIP)
-printer.fileprinter(buy_price, cycleoutput,cycleconverter)
+printer.fileprinter(buy_price, cycleoutput,cycleconverter, cyclepoints)

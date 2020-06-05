@@ -1,4 +1,4 @@
-# python-turnip
+# python-turnip v1.1
 
 ## An ACNH turnip price calculator written in Python 3
 
@@ -7,16 +7,17 @@
 #### main.py *interface*
 
 - Main input fields for initial buy price and datapoints that feeds data into trends.py
-  - *cycleconverter* converts integer of cycle to ux friendly output
+  - *cycleconverter* converts integer of cycle into cyclepoints dictionary call
   - *cyclepoints* stores the values of each cycle if applicable
 
 #### trends.py *utility*
 
 - Analyzes datapoints from main.py input and determines trend with minimum and maximum values per cycle
-  - *random* - no discernable trend with highs and lows
+  - *random* - seemingly random trend with highs and lows
   - *decreasing* - steady decrease in value throughout the cycles
   - *large spike* - steady decrease in value into a large net increase and back to a steady decrease
   - *small spike* - steady decrease in value into a small net increase and back to a steady decrease
+  - *inconclusive* - trend is not discernable from provided data
 
 #### printer.py *output*
 
